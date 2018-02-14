@@ -2,39 +2,42 @@
 """
 Created on Wed Feb  7 09:21:31 2018
 
-@author: zerow
+@author: salvelop07
 """
 import datetime
+
+
 class WebNode:
     def __init__(self, WebPage, Time):
         """ Initialize class """
         self.WebPage = WebPage
         self.Time = Time
         self.pNext = None
-        
+
+
 class WebList:
     def __init__(self):
         """ Initialize linked list """
         self.length = 0
         self.head = None
-        
+
     def IsEmpty(self):
         """ Check if linked list is empty """
         return self.length == 0
-    
+
     def Clear(self):
         """ Clear the whole linked list """
         self.head = None
         self.length = 0
         print("Clear the linked list finished.")
-    
+
     def Append(self, NewWebNode):
         """ Append the web node to the last """
         if isinstance(NewWebNode, WebNode):
             pass
         else:
-            print ('Input node is not valid')
-            print (exit)
+            print('Input node is not valid')
+            print(exit)
         # Deal with empty list
         if self.IsEmpty():
             self.head = NewWebNode
@@ -44,7 +47,7 @@ class WebList:
                 node = node.pNext
             node.pNext = NewWebNode
         self.length += 1
-    
+
     def Insert(self, WebPage, Time, Index):
         """ Insert a node into the list """
         # First judge if the insertion position is valid
@@ -63,21 +66,21 @@ class WebList:
                 # Locate the node attached to the index
                 while Index - 1:
                     CurrentNode = CurrentNode.pNext
-                    Index -= 1 
+                    Index -= 1
             # Insert the new node
             NewWebNode.pNext = CurrentNode.pNext
             CurrentNode.pNext = NewWebNode
             self.length += 1
             return
         else:
-            print ("Input index value is invalid.")
-    
+            print("Input index value is invalid.")
+
     def Delete(self, Index):
         """ Delete the element of certain index position """
         if type(Index) is int:
             if Index > self.length:
-                print ("Input index value is out of range.")
-                return 
+                print("Input index value is out of range.")
+                return
             else:
                 CurrentNode = self.head
                 if Index == 0:
@@ -90,14 +93,14 @@ class WebList:
                     self.length -= 1
                     return
         else:
-            print ("Input index value is invalid.")
-            
+            print("Input index value is invalid.")
+
     def GetWebPage(self, Index):
-        """ Extract the web page stored in the position """ 
+        """ Extract the web page stored in the position """
         if type(Index) is int:
             if Index > self.length:
-                print ("Input index value is out of range.")
-                return 
+                print("Input index value is out of range.")
+                return
             else:
                 CurrentNode = self.head
                 if Index == 0:
@@ -108,8 +111,8 @@ class WebList:
                         Index -= 1
                     return [CurrentNode.pNext.WebPage, CurrentNode.pNext.Time]
         else:
-            print ("Input index value is invalid.")
-    
+            print("Input index value is invalid.")
+
     def GetLength(self):
         """ Return the length of the linked list """
         CurrentNode = self.head
@@ -121,18 +124,19 @@ class WebList:
             return i
         else:
             return 0
-    
+
     def PrintLinkedList(self):
         """ Print all the elements in the linked list """
         if self.IsEmpty():
-            print ("The web list is empty.")
+            print("The web list is empty.")
         else:
             CurrentNode = self.head
-            print (CurrentNode.WebPage)
+            print(CurrentNode.WebPage)
             while CurrentNode.pNext:
                 CurrentNode = CurrentNode.pNext
-                print (CurrentNode.WebPage)
+                print(CurrentNode.WebPage)
+
 
 if __name__ == '__main__':
     ### Main ###
-    print ('Completed construction of linked list.')   
+    print('Completed construction of linked list.')
